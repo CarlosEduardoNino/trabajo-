@@ -55,7 +55,11 @@ const rooms = ref([
 
 <style scoped>
 
-
+body {
+    background: linear-gradient(to bottom, #d4c19c, #f2e8d5);
+    font-family: 'Arial', sans-serif;
+  }
+  
 .hotel-rooms-container {
   display: flex;
   background: linear-gradient(135deg, #e6d7b9 0%, #d9c8a3 50%, #c7b28e 100%);

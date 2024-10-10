@@ -87,7 +87,7 @@
   
   <style scoped>
   body {
-    background-color: #d3bfa7;
+    background: linear-gradient(to bottom, #d4c19c, #f2e8d5);
     font-family: 'Arial', sans-serif;
   }
   

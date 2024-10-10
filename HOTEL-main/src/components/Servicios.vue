@@ -182,7 +182,11 @@
 </template>
 
 <style>
- 
+   body {
+    background: linear-gradient(to bottom, #d4c19c, #f2e8d5);
+    font-family: 'Arial', sans-serif;
+  }
+  
  .card {
       background-color: #fff;
       border-radius: 15px;
