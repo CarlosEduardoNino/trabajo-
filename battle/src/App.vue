@@ -189,6 +189,8 @@ const seleccionarRondas = (n) => {
   rondas.value = n;
 };
 
+
+
 const iniciarJuego = async () => {
   cargando.value = true;
   puntos[0] = 0;
@@ -337,6 +339,7 @@ const determinarGanadorFinal = () => {
   mostrarModal.value = true;
 };
 
+
 const cerrarModal = () => {
   mostrarModal.value = false;
   reiniciarJuego();
@@ -376,7 +379,9 @@ const reiniciarJuego = () => {
   --text-color: #333333;
   --highlight-text-color: #1398e6;
 }
-
+p{
+  font-size:0.7em;
+}
 body {
   background-color: #07f1e6;
   background-image: 
@@ -385,6 +390,7 @@ body {
   background-attachment: fixed;
   font-family: 'Press Start 2P', cursive;
   color: var(--text-color);
+  
 }
 
 .app-container {
@@ -551,7 +557,7 @@ body {
   box-shadow: 0 0 15px #ffff00;
 }
 
-/* Eliminar los estilos de opacidad para las cartas utilizadas */
+
 .pokemon-card.used {
   opacity: 1;
   filter: none;
@@ -571,7 +577,7 @@ body {
 }
 
 .pokemon-card {
-  width: calc(33% - 15px);
+  width: calc(53% - 35px);
   border: 3px solid var(--pokemon-blue);
   border-radius: 10px;
   padding: 15px;
@@ -610,7 +616,7 @@ body {
 
 
 .pokemon-card {
-  width: calc(43% - 25px);
+  width: calc(53% - 35px);
   border: 3px solid var(--pokemon-blue);
   border-radius: 15px;
   padding: 15px;
@@ -632,7 +638,7 @@ body {
   top: -50%;
   left: -50%;
   width: 200%;
-  height: 200%;
+  height: 250%;
   background: linear-gradient(
     to bottom right,
     rgba(255, 255, 255, 0) 0%,
