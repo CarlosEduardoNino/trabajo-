@@ -1,418 +1,402 @@
-
-
 <template>
- <body>
-  <div class="carousel">
-   <img alt="Hotel entrance" class="active" src="https://storage.googleapis.com/a1aa/image/1.jpg"/>
-   <div class="description left">
-    Welcome to our grand entrance.
-   </div>
-   <img alt="Inside the hotel" src="https://tse2.mm.bing.net/th?id=OIG4.IImctPqVHBoyDh_kLLTG&w=270&h=270&c=6&r=0&o=5&pid=ImgGn"/>
-   <div class="description right">
-    Experience luxury inside our hotel.
-   </div>
-   <img alt="Aerial view of the hotel" src="https://storage.googleapis.com/a1aa/image/3.jpg"/>
-   <div class="description left">
-    A breathtaking aerial view of our hotel.
-   </div>
-   <img alt="City view from the hotel" src="https://storage.googleapis.com/a1aa/image/4.jpg"/>
-   <div class="description right">
-    Stunning city views from our hotel.
-   </div>
-   <img alt="Beach view from the hotel" src="https://storage.googleapis.com/a1aa/image/5.jpg"/>
-   <div class="description left">
-    Relax with a beautiful beach view.
-   </div>
+  <div>
+    <div class="header">
+      <div class="carousel">
+        <img
+          v-for="(slide, index) in slides"
+          :key="index"
+          :src="slide.image"
+          :alt="slide.title"
+          class="carousel-image"
+          :style="{ display: currentSlide === index ? 'block' : 'none' }"
+        />
+        <div class="text" id="carousel-text">
+          <h1>{{ slides[currentSlide].title }}</h1>
+          <p>{{ slides[currentSlide].description }}</p>
+        </div>
+        <button class="prev" @click="changeSlide(-1)">❮</button>
+        <button class="next" @click="changeSlide(1)">❯</button>
+      </div>
+    </div>
+    
+    <div class="content">
+      <div
+        v-for="(section, index) in sections"
+        :key="index"
+        class="section"
+        :class="{ 'reverse': index % 2 !== 0 }"
+      >
+        <img :src="section.image" :alt="section.title" />
+        <div class="text">
+          <h2>{{ section.title }}</h2>
+          <p>{{ section.description }}</p>
+          <a class="button" href="#">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0B7rAD5TWK7roFOZPzNUkWhnHY1iNmd1gGQ&s');">
+      <p>Contact Us</p>
+      <div class="icons">
+        <a href="#"><i class="fas fa-phone"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+        <a href="#"><i class="fas fa-map-marker-alt"></i></a>
+      </div>
+    </div>
   </div>
-  <div class="sections">
-   <div class="section">
-    <img alt="Hobby section image" height="200" src="https://storage.googleapis.com/a1aa/image/I8n4fBeRefAGIRzfMT4y5kVAoKv8YoduA0QPUJtxBCvWQTpcC.jpg" width="200"/>
-    <h3>
-     HOBBY
-    </h3>
-    <p>
-     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque aliquam odio et faucibus.
-    </p>
-    <button class="btn">
-     READ MORE
-    </button>
-   </div>
-   <div class="section">
-    <img alt="Rooms section image" height="200" src="https://storage.googleapis.com/a1aa/image/uY8lE7KpyIJWJNNWqO6nYuxYmsZ323P1NcwggyRKN4ZgmS5E.jpg" width="200"/>
-    <h3>
-     ROOMS
-    </h3>
-    <p>
-     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque aliquam odio et faucibus.
-    </p>
-    <button class="btn">
-     READ MORE
-    </button>
-   </div>
-   <div class="section">
-    <img alt="Retreat section image" height="200" src="https://storage.googleapis.com/a1aa/image/6jOj48qXdRoGGF608fD1OukbsiYgcUC0FqgDOrs9hkvBNlyJA.jpg" width="200"/>
-    <h3>
-     RETREAT
-    </h3>
-    <p>
-     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque aliquam odio et faucibus.
-    </p>
-    <button class="btn">
-     READ MORE
-    </button>
-   </div>
-   <div class="section">
-    <img alt="Event section image" height="200" src="https://storage.googleapis.com/a1aa/image/nCufUGzwgD3AO6ktj0Z8LfppZIL5rCcdQmufDAKAeyv9npUOB.jpg" width="200"/>
-    <h3>
-     EVENT
-    </h3>
-    <p>
-     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque aliquam odio et faucibus.
-    </p>
-    <button class="btn">
-     READ MORE
-    </button>
-   </div>
-  </div>
-  <div class="history">
-   <h2>
-    The History of Our Hotel
-   </h2>
-   <p>
-    Our hotel has a rich history dating back to the early 1900s. Originally built as a grand estate, it has been transformed over the years into the luxurious retreat it is today. With its stunning architecture and elegant interiors, our hotel offers a unique blend of historic charm and modern comfort. Guests can enjoy a variety of amenities, including fine dining, spa services, and beautifully appointed rooms. Whether you're here for a romantic getaway or a family vacation, our hotel provides the perfect setting for an unforgettable experience.
-   </p>
-  </div>
-  <div class="serpentine-sections">
-   <div class="serpentine-section">
-    <img alt="Dining area image" height="400" src="https://storage.googleapis.com/a1aa/image/veedpVEbdEueBpnkYqHva0hN705VwteQrKFbCeI5s59GnXpcC.jpg" width="600"/>
-    <div class="text">
-     <h3>
-      Exquisite Dining
-     </h3>
-     <p>
-      Our hotel offers a variety of dining options, from casual cafes to fine dining restaurants. Enjoy delicious cuisine prepared by our talented chefs using the freshest ingredients.
-     </p>
-    </div>
-   </div>
-   <div class="serpentine-section">
-    <img alt="Spa area image" height="400" src="https://storage.googleapis.com/a1aa/image/BIACElypcYZTFRJeJGn7fOcNiw4eqDOrZoAV5VVVEiJm5VKnA.jpg" width="600"/>
-    <div class="text">
-     <h3>
-      Relaxing Spa
-     </h3>
-     <p>
-      Indulge in a range of spa treatments designed to relax and rejuvenate. Our spa features a variety of services, including massages, facials, and body treatments.
-     </p>
-    </div>
-   </div>
-   <div class="serpentine-section">
-    <img alt="Luxury rooms image" height="400" src="https://storage.googleapis.com/a1aa/image/D7bKs9TVLUJ5ER4dOJwBBpSSDQZ7xHeCJdFedNOeK9Sq5VKnA.jpg" width="600"/>
-    <div class="text">
-     <h3>
-      Luxury Rooms
-     </h3>
-     <p>
-      Our rooms are designed with comfort and elegance in mind. Each room features luxurious bedding, modern amenities, and stunning views of the surrounding area.
-     </p>
-    </div>
-   </div>
-   <div class="serpentine-section">
-    <img alt="Event space image" height="400" src="https://storage.googleapis.com/a1aa/image/ey1a6lmTzU0pK6Q7NPP1lpOtPoaJU5sk3zTzeD5g0qb28KlTA.jpg" width="600"/>
-    <div class="text">
-     <h3>
-      Event Spaces
-     </h3>
-     <p>
-      Our hotel offers a variety of event spaces perfect for weddings, conferences, and other special occasions. Our experienced staff will ensure your event is a success.
-     </p>
-    </div>
-   </div>
-  </div>
-  <div class="footer">
-   <div class="footer-content">
-    <div class="footer-section">
-     <h4>
-      Contact Us
-     </h4>
-     <p>
-      <i class="fas fa-map-marker-alt">
-      </i>
-      1234 Hotel St, City, Country
-      <br/>
-      <i class="fas fa-phone">
-      </i>
-      Phone: (123) 456-7890
-      <br/>
-      <i class="fas fa-envelope">
-      </i>
-      Email: info@ourhotel.com
-     </p>
-    </div>
-    <div class="footer-section">
-     <h4>
-      Quick Links
-     </h4>
-     <p>
-      <a href="#">
-       <i class="fas fa-home">
-       </i>
-       Home
-      </a>
-      <br/>
-      <a href="#">
-       <i class="fas fa-info-circle">
-       </i>
-       About
-      </a>
-      <br/>
-      <a href="#">
-       <i class="fas fa-concierge-bell">
-       </i>
-       Services
-      </a>
-      <br/>
-      <a href="#">
-       <i class="fas fa-envelope">
-       </i>
-       Contact
-      </a>
-     </p>
-    </div>
-    <div class="footer-section">
-     <h4>
-      Follow Us
-     </h4>
-     <div class="social-icons">
-      <a href="#">
-       <i class="fab fa-facebook-f">
-       </i>
-      </a>
-      <a href="#">
-       <i class="fab fa-twitter">
-       </i>
-      </a>
-      <a href="#">
-       <i class="fab fa-instagram">
-       </i>
-      </a>
-      <a href="#">
-       <i class="fab fa-linkedin-in">
-       </i>
-      </a>
-     </div>
-    </div>
-   </div>
-   <div class="footer-bottom">
-    <p class="footer-logo">
-     Our Hotel
-    </p>
-    <p>
-     © 2023 Our Hotel. All rights reserved.
-    </p>
-   </div>
-  </div>
-  
- </body>
- </template>
- <script>
-   let currentIndex = 0;
-        const images = document.querySelectorAll('.carousel img');
-        const descriptions = document.querySelectorAll('.carousel .description');
-        const totalImages = images.length;
+</template>
 
-        function showNextImage() {
-            images[currentIndex].classList.remove('active');
-            descriptions[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % totalImages;
-            images[currentIndex].classList.add('active');
-            descriptions[currentIndex].classList.add('active');
-        }
+<script setup>
+import { ref, onMounted } from 'vue';
+import { gsap } from 'gsap';
 
-        setInterval(showNextImage, 3000);
-  </script>
-<style>
- 
-   body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to bottom, #d4c19c, #f2e8d5);
-            
-        }
-        .carousel {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            overflow: hidden;
-        }
-        .carousel img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-        .carousel img.active {
-            opacity: 1;
-        }
-        .carousel .description {
-            position: absolute;
-            bottom: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 18px;
-            max-width: 300px;
-        }
-        .carousel .description.left {
-            left: 20px;
-        }
-        .carousel .description.right {
-            right: 20px;
-        }
-        .sections {
-            display: flex;
-            justify-content: space-around;
-            padding: 50px 0;
-            background-color: #e0e0e0;
-        }
-        .section {
-            text-align: center;
-            max-width: 200px;
-        }
-        .section img {
-            width: 100%;
-            border-radius: 50%;
-        }
-        .section h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            margin: 20px 0 10px;
-        }
-        .section p {
-            font-size: 14px;
-            color: #555;
-        }
-        .section .btn {
-            background-color: #d4a373;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .section .btn:hover {
-            background-color: #b5835a;
-        }
-        .history {
-            padding: 50px;
-            background: linear-gradient(135deg, #e6d7b9 0%, #d9c8a3 50%, #c7b28e 100%);
-            text-align: center;
-        }
-        .history h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        .history p {
-            font-size: 18px;
-            max-width: 800px;
-            margin: 0 auto;
-            color: #333;
-        }
-        .serpentine-sections {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 50px 0;
-        }
-        .serpentine-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 80%;
-            margin-bottom: 50px;
-        }
-        .serpentine-section:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-        .serpentine-section img {
-            width: 45%;
-            border-radius: 10px;
-        }
-        .serpentine-section .text {
-            width: 45%;
-            text-align: left;
-        }
-        .serpentine-section .text h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        .serpentine-section .text p {
-            font-size: 16px;
-            color: #555;
-        }
-        .footer {
-            background-color: #2c2c2c;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 14px;
-            font-family: 'Playfair Display', serif;
-        }
-        .footer .footer-content {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            padding: 20px 0;
-        }
-        .footer .footer-section {
-            max-width: 200px;
-            margin: 10px;
-        }
-        .footer .footer-section h4 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        .footer .footer-section p, .footer .footer-section a {
-            font-size: 14px;
-            color: #ccc;
-            text-decoration: none;
-        }
-        .footer .footer-section a:hover {
-            text-decoration: underline;
-        }
-        .footer .social-icons {
-            margin-top: 20px;
-        }
-        .footer .social-icons a {
-            color: #d4a373;
-            margin: 0 10px;
-            font-size: 20px;
-            text-decoration: none;
-        }
-        .footer .social-icons a:hover {
-            color: #b5835a;
-        }
-        .footer .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            padding-top: 20px;
-            border-top: 1px solid #444;
-        }
-        .footer .footer-bottom p {
-            margin: 0;
-        }
-        .footer .footer-bottom .footer-logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-  
+onMounted(() => {
+  gsap.from('.carousel-image', { opacity: 0, duration: 1, stagger: 0.5 });
+});
+
+const currentSlide = ref(0);
+const slides = ref([
+  {
+    image: 'https://storage.googleapis.com/a1aa/image/UyFOrJb1DloPAhYYRF7bYtseZ7IAJoa3vvzIoMLIVZxkARzJA.jpg',
+    title: 'Our History',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+  },
+  {
+    image: 'https://storage.googleapis.com/a1aa/image/UaYCo9QvEY7eQKcBaqb2S4DudfZa3fdXAoOJ4a5lhjBZCENnA.jpg',
+    title: 'Luxurious Lobby',
+    description: 'Experience the grandeur of our opulent lobby with golden chandeliers and elegant decor.'
+  },
+  {
+    image: 'https://storage.googleapis.com/a1aa/image/9VKtsPwzQVqHJlfVIJ3mJrOVx4EPDyoXDsr0Y6D1BTKlARzJA.jpg',
+    title: 'Beautiful Gardens',
+    description: 'Stroll through our beautiful gardens adorned with golden statues and a serene fountain.'
+  },
+  {
+    image: 'https://storage.googleapis.com/a1aa/image/XYaz6EtYzfTUXigL9qdJ0TW2BhDS7v0mUOJHKbfSQRFQeDNnA.jpg',
+    title: 'Elegant Rooms',
+    description: 'Relax in our elegantly designed rooms with luxurious amenities and stunning views.'
+  },
+  {
+    image: 'https://storage.googleapis.com/a1aa/image/zYFlWPfzxRXyACgy8wzjoT9puY0ftlQUGOhuqysrKchUeDNnA.jpg',
+    title: 'Fine Dining',
+    description: 'Enjoy gourmet meals prepared by our world-class chefs in a sophisticated setting.'
+  }
+]);
+
+const sections = ref([
+  {
+    image: 'https://storage.googleapis.com/a1aa/image/zYFlWPfzxRXyACgy8wzjoT9puY0ftlQUGOhuqysrKchUeDNnA.jpg',
+    title: 'About Us',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+  },
+  {
+    image: 'https://storage.googleapis.com/a1aa/image/XYaz6EtYzfTUXigL9qdJ0TW2BhDS7v0mUOJHKbfSQRFQeDNnA.jpg',
+    title: 'Spa',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+  },
+  {
+    image: 'https://storage.googleapis.com/a1aa/image/QZOgbeVf77m7mU27qXCQ87TcC9SibBizYTBJaDw66zESeDNnA.jpg',
+    title: 'Rooms & Suites',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+  },
+  {
+    image: 'https://storage.googleapis.com/a1aa/image/UaYCo9QvEY7eQKcBaqb2S4DudfZa3fdXAoOJ4a5lhjBZCENnA.jpg',
+    title: 'Events',
+    description: 'Host your events in our luxurious halls with top-notch facilities and services.'
+  },
+  {
+    image: 'https://storage.googleapis.com/a1aa/image/9VKtsPwzQVqHJlfVIJ3mJrOVx4EPDyoXDsr0Y6D1BTKlARzJA.jpg',
+    title: 'Beaches',
+    description: 'Relax on our beautiful beaches with golden sand and crystal-clear waters.'
+  }
+]);
+
+const changeSlide = (direction) => {
+  currentSlide.value = (currentSlide.value + direction + slides.value.length) % slides.value.length;
+};
+
+const autoSlide = () => {
+  changeSlide(1);
+};
+
+onMounted(() => {
+  setInterval(autoSlide, 5000); // Change slide every 5 seconds
+});
+</script>
+
+<style scoped>
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: radial-gradient(circle at top, #333, #000); /* Fondo oscuro con gradiente */
+  animation: pageFadeIn 1.5s ease-in-out forwards; /* Animación para la carga de la página */
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.header {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  max-height: 800px;
+  overflow: hidden;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.carousel img {
+  width: 100%;
+  height: 800px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel:hover img {
+  transform: scale(1.1); /* Zoom suave al hacer hover */
+}
+
+.carousel .text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: black;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+  width: 30%;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  animation: textSlideIn 1s ease-in-out forwards; /* Texto deslizándose hacia arriba */
+}
+
+@keyframes textSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.carousel .text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5em;
+  margin: 0;
+  color: gold;
+  animation: shine 1s alternate infinite;
+}
+
+@keyframes shine {
+  0% { box-shadow: 0 0 10px gold; }
+  100% { box-shadow: 0 0 20px gold; }
+}
+
+.carousel .text p {
+  font-size: 1.2em;
+  color: white;
+}
+
+.carousel .prev, .carousel .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.5em;
+  transition: all 0.4s ease;
+}
+
+.carousel .prev {
+  left: 10px;
+}
+
+.carousel .next {
+  right: 10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.content .section {
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  height: 320px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  animation: cardSlideIn 1s ease-in-out forwards; /* Animación de aparición */
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px) rotate(-5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+
+.content .section.reverse {
+  flex-direction: row-reverse;
+  animation: slideInReverse 1s ease-in-out forwards;
+}
+
+@keyframes slideInReverse {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.content .section:hover {
+  transform: translateY(-10px); /* Elevación al hacer hover */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.content .section img {
+  width: 50%;
+  object-fit: cover;
+}
+
+.content .section .text {
+  padding: 40px;
+  width: 50%;
+}
+
+.content .section .text h2 {
+  font-family: 'Lora', serif;
+  font-size: 1.8em;
+  margin: 0 0 20px 0;
+  color: #333;
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+.content .section .text p {
+  font-size: 1.1em;
+  color: #666;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+.content .section .text .button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #FFD700, #DAA520);
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  animation: buttonAppear 0.8s ease-out; /* Aparición suave del botón */
+}
+
+@keyframes buttonAppear {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.content .section .button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.7s;
+}
+
+.content .section .button:hover::before {
+  left: 100%;
+}
+
+.content .section .button:hover {
+  background-color: #d4af37;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.footer {
+  background-image: url('https://thumbs.dreamstime.com/b/interior-de-un-cuarto-ba%C3%B1o-lujo-con-jacuzzi-el-lujoso-y-acogedor-ba%C3%B1era-hidromasaje-165763768.jpg');
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer .icons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.footer .icons a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 1.5em;
+  transition: transform 0.3s ease, color 0.3s ease;
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.footer .icons a:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.footer .icons a:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.footer .icons a:hover {
+  color: gold;
+  transform: translateY(-5px) scale(1.1);
+}
+
 </style>

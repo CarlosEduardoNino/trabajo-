@@ -1,120 +1,239 @@
 <template>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3" v-for="(activity, index) in activities" :key="index">
-          <div class="card">
-            <img
-              :src="activity.image"
-              :alt="activity.altText"
-              class="card-img-top"
-              width="600"
-              height="400"
-            />
-            <div class="card-body text-center">
-              <h5 class="card-title">{{ activity.title }}</h5>
-              <p class="card-text">Course</p>
-              <p class="card-text">{{ activity.description }}</p>
-              <div class="icon-bar">
-                <i class="fas fa-heart"></i>
-                <i class="fas fa-share"></i>
-                <i class="fas fa-comment"></i>
-              </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4" v-for="(activity, index) in activities" :key="index">
+        <div :class="['card', `card-${index + 1}`]" v-motion-slide-visible>
+          <img
+            :src="activity.image"
+            :alt="activity.altText"
+            class="card-img-top"
+            :style="{ width: activity.imageWidth, height: activity.imageHeight }"
+          />
+          <div class="card-body text-center">
+            <h5 :class="['card-title', `title-${index + 1}`]">{{ activity.title }}</h5>
+            <p class="card-text">{{ activity.type }}</p>
+            <p :class="['card-description', `description-${index + 1}`]">{{ activity.description }}</p>
+            <div class="icon-bar">
+              <i :class="['fas', activity.icon1]"></i>
+              <i :class="['fas', activity.icon2]"></i>
+              <i :class="['fas', activity.icon3]"></i>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </template>
-  
-  <script setup>
-  const activities = [
-    {
-      title: 'Kayaking',
-      description: 'Cursus et nisl sit amet dolor interdum fermentum. Integer nec odio. Praesent libero.',
-      image: 'https://storage.googleapis.com/a1aa/image/bRhs9ixFf33sPKckL0P0QM5PW9EjCreoC10LzDjPz2sRXLkTA.jpg',
-      altText: 'Illustration of kayaking in a serene lake with mountains in the background',
-    },
-    {
-      title: 'Hiking',
-      description: 'Cursus et nisl sit amet dolor interdum fermentum. Integer nec odio. Praesent libero.',
-      image: 'https://storage.googleapis.com/a1aa/image/LVBMaehpEtXZXqpLf4RJy6cOeRjIRMp9ebgxwIDgOeAH7ahcC.jpg',
-      altText: 'Illustration of hiking in a mountainous area',
-    },
-    {
-      title: 'Yoge Tetraat',
-      description: 'Cursus et nisl sit amet dolor interdum fermentum. Integer nec odio. Praesent libero.',
-      image: 'https://storage.googleapis.com/a1aa/image/b4n9ZL54LTohFxjU3zCX0QgdSBWHgTeoEA0WlPtMhgOtrFyJA.jpg',
-      altText: 'Illustration of a person doing yoga with a hot air balloon in the background',
-    },
-    {
-      title: 'Spa Tasting',
-      description: 'Cursus et nisl sit amet dolor interdum fermentum. Integer nec odio. Praesent libero.',
-      image: 'https://storage.googleapis.com/a1aa/image/VfOxxEuet2muS0zvqIJXrKxw8G8z30wLaOz7iSPtkxvcXLkTA.jpg',
-      altText: 'Illustration of a serene spa setting with mountains in the background',
-    },
-    {
-      title: 'Hocking Tessings',
-      description: 'Cursus et nisl sit amet dolor interdum fermentum. Integer nec odio. Praesent libero.',
-      image: 'https://storage.googleapis.com/a1aa/image/p3Hh4Q2SwPJcAF46V47rftrgG6Tm2sCKrM4OvksdArlprFyJA.jpg',
-      altText: 'Illustration of a large estate with mountains in the background',
-    },
-    {
-      title: 'Wine Tasteat',
-      description: 'Cursus et nisl sit amet dolor interdum fermentum. Integer nec odio. Praesent libero.',
-      image: 'https://storage.googleapis.com/a1aa/image/ZaUlRniDNAahARgwUgfRBUyeM3CszjDPnvsaXCriGenuuWInA.jpg',
-      altText: 'Illustration of wine tasting with a person holding a glass of wine and a vineyard in the background',
-    },
-    {
-      title: 'Yoohe Teasses',
-      description: 'Cursus et nisl sit amet dolor interdum fermentum. Integer nec odio. Praesent libero.',
-      image: 'https://storage.googleapis.com/a1aa/image/eNUbuKp4Tp1UTyuXU5yrSLRMx68YKEfywIo8CouYSKVbXLkTA.jpg',
-      altText: 'Illustration of a person riding a horse with mountains in the background',
-    },
-    {
-      title: 'Cookback Classes',
-      description: 'Cursus et nisl sit amet dolor interdum fermentum. Integer nec odio. Praesent libero.',
-      image: 'https://storage.googleapis.com/a1aa/image/XSrMwMVxRjobLZjQXXQwHclq04kN0SrAMSI7AUeeZ3iUXLkTA.jpg',
-      altText: 'Illustration of a cooking class with a chef and students in a kitchen',
-    },
-    {
-      title: 'Golfing',
-      description: 'Cursus et nisl sit amet dolor interdum fermentum. Integer nec odio. Praesent libero.',
-      image: 'https://storage.googleapis.com/a1aa/image/2nmb2gHPQmYeZ6WZPbRcQnV8bMUrcMdGhBJUs3zLIIjqrFyJA.jpg',
-      altText: 'Illustration of a dartboard and golf balls',
-    },
-  ];
-  </script>
-  
-  <style scoped>
-  body {
-    background: linear-gradient(to bottom, #d4c19c, #f2e8d5);
-    font-family: 'Arial', sans-serif;
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { MotionPlugin } from '@vueuse/motion'
+
+const activities = ref([
+  {
+    title: 'Kayaking Adventure',
+    type: 'Water Sport',
+    description: 'Embark on a thrilling kayaking journey through rapids and calm waters.',
+    image: '/api/placeholder/600/400',
+    altText: 'Person kayaking in white water rapids',
+    imageWidth: '100%',
+    imageHeight: '250px',
+    icon1: 'fa-water',
+    icon2: 'fa-life-ring',
+    icon3: 'fa-map-marked-alt'
+  },
+  {
+    title: 'Mountain Hiking',
+    type: 'Outdoor Activity',
+    description: 'Explore breathtaking trails and reach new heights in stunning mountain landscapes.',
+    image: '/api/placeholder/600/400',
+    altText: 'Hiker on a mountain trail with a scenic backdrop',
+    imageWidth: '100%',
+    imageHeight: '300px',
+    icon1: 'fa-hiking',
+    icon2: 'fa-mountain',
+    icon3: 'fa-compass'
+  },
+  {
+    title: 'Zen Yoga Retreat',
+    type: 'Wellness',
+    description: 'Find inner peace and improve flexibility in our tranquil yoga sessions.',
+    image: '/api/placeholder/600/400',
+    altText: 'Person doing yoga pose in a serene natural setting',
+    imageWidth: '100%',
+    imageHeight: '280px',
+    icon1: 'fa-om',
+    icon2: 'fa-spa',
+    icon3: 'fa-heart'
+  },
+  {
+    title: 'Gourmet Cooking Class',
+    type: 'Culinary Experience',
+    description: 'Learn to create exquisite dishes under the guidance of world-class chefs.',
+    image: '/api/placeholder/600/400',
+    altText: 'Chef demonstrating cooking techniques to a group',
+    imageWidth: '100%',
+    imageHeight: '220px',
+    icon1: 'fa-utensils',
+    icon2: 'fa-hat-chef',
+    icon3: 'fa-wine-glass-alt'
+  },
+  {
+    title: 'Wildlife Photography',
+    type: 'Creative Workshop',
+    description: 'Capture the beauty of nature and wildlife through your lens.',
+    image: '/api/placeholder/600/400',
+    altText: 'Photographer taking picture of a wild animal',
+    imageWidth: '100%',
+    imageHeight: '260px',
+    icon1: 'fa-camera',
+    icon2: 'fa-paw',
+    icon3: 'fa-tree'
+  },
+  {
+    title: 'Stargazing Night',
+    type: 'Astronomy Event',
+    description: 'Explore the wonders of the night sky with expert astronomers.',
+    image: '/api/placeholder/600/400',
+    altText: 'Silhouette of people looking at a starry sky',
+    imageWidth: '100%',
+    imageHeight: '240px',
+    icon1: 'fa-star',
+    icon2: 'fa-moon',
+    icon3: 'fa-telescope'
+  },
+  {
+    title: 'Surf Camp',
+    type: 'Water Sport',
+    description: 'Ride the waves and learn surfing techniques from professional instructors.',
+    image: '/api/placeholder/600/400',
+    altText: 'Surfer riding a big wave',
+    imageWidth: '100%',
+    imageHeight: '270px',
+    icon1: 'fa-water',
+    icon2: 'fa-tint',
+    icon3: 'fa-sun'
+  },
+  {
+    title: 'Rock Climbing Adventure',
+    type: 'Extreme Sport',
+    description: 'Challenge yourself on natural rock formations with expert guidance and safety equipment.',
+    image: '/api/placeholder/600/400',
+    altText: 'Rock climber scaling a cliff face',
+    imageWidth: '100%',
+    imageHeight: '290px',
+    icon1: 'fa-mountain',
+    icon2: 'fa-hand-rock',
+    icon3: 'fa-harness'
+  },
+  {
+    title: 'Pottery Workshop',
+    type: 'Arts and Crafts',
+    description: 'Discover the art of ceramics and create your own unique pottery pieces.',
+    image: '/api/placeholder/600/400',
+    altText: 'Hands shaping clay on a pottery wheel',
+    imageWidth: '100%',
+    imageHeight: '230px',
+    icon1: 'fa-paint-brush',
+    icon2: 'fa-palette',
+    icon3: 'fa-magic'
   }
-  
-  .card {
-    border: none;
-    border-radius: 15px;
-    margin: 10px;
-    background-color: #f5f0e6;
-  }
-  
-  .card img {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-  }
-  
-  .card-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .card-text {
-    font-size: 0.9rem;
-    color: #6c757d;
-  }
-  
-  .icon-bar {
-    color: #6c757d;
-  }
-  </style>
-  
+])
+</script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  font-family: 'Poppins', sans-serif;
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+  margin: 20px 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.card-type {
+  font-size: 1rem;
+  color: #6c757d;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  color: #495057;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.icon-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  color: #6c757d;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.icon-bar i {
+  transition: color 0.3s ease-in-out;
+}
+
+.icon-bar i:hover {
+  color: #007bff;
+}
+
+/* Unique styles for each card */
+.card-1 { background-color: #e8f5e9; }
+.card-2 { background-color: #fff3e0; }
+.card-3 { background-color: #e1f5fe; }
+.card-4 { background-color: #fce4ec; }
+.card-5 { background-color: #f3e5f5; }
+.card-6 { background-color: #e8eaf6; }
+.card-7 { background-color: #f1f8e9; }
+.card-8 { background-color: #fff8e1; }
+.card-9 { background-color: #e0f2f1; }
+
+.title-1, .title-2, .title-3, .title-4, .title-5, .title-6, .title-7, .title-8, .title-9 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  position: relative;
+
+}
+
+.description-1, .description-2, .description-3, .description-4, .description-5, .description-6, .description-7, .description-8, .description-9 {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+</style>

@@ -5,7 +5,7 @@ import './style.css'
 import App from './App.vue'
 import {router} from "./routes/routes.js"
 import { Quasar } from 'quasar'
-// Import icon libraries
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import '@quasar/extras/material-icons/material-icons.css'
 
 // Import Quasar css
