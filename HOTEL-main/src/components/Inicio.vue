@@ -304,7 +304,7 @@ body {
   position: relative;
   text-align: center;
   color: white;
-  padding-top: 60px; /* To account for fixed navbar */
+  padding-top: 60px; 
 }
 
 .carousel {
@@ -327,8 +327,8 @@ body {
 
 .carousel .text {
   position: absolute;
-  bottom: 20%;
-  left: 10%;
+  bottom: 0%;
+  left: 0%;
   background: rgba(0, 0, 0, 0.7);
   border: 1px solid rgba(255, 215, 0, 0.3);
   padding: 2rem;

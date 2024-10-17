@@ -2,7 +2,6 @@
   <div class="hotel-rooms-container">
     <div class="sidebar">
       <h1 class="main-title">HOTEL ROOMS</h1>
-      <h2 class="subtitle">HOTEL ROOMS</h2>
       <h3 class="subsubtitle">NOW</h3>
       <div class="description">
         <p>Experience luxury and comfort</p>
@@ -28,7 +27,7 @@
       </div>
     </div>
     
-    <!-- Modal -->
+ 
     <div v-if="selectedRoom" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
         <button class="close-button" @click="closeModal">&times;</button>
@@ -324,5 +323,47 @@ body {
 
 .book-now-button:hover {
   background-color: #b8860b;
+}
+
+@media screen and (max-width: 768px) {
+  .modal-content {
+    padding: 20px;
+  }
+
+  .modal-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .modal-description {
+    font-size: 0.9rem;
+  }
+
+  .modal-details {  
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  body{
+    overflow-x: hidden;
+  }
+  .hotel-rooms-container{
+    flex-direction: column;
+    align-items: center;
+  }
+  .sidebar{
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+   justify-content: center;
+   align-items: center;
+   align-content: center;
+    font-size:large;
+  }
+  .room-cards{
+    width: 100%;
+  }
+  .room-card{
+    width: 100%;
+  }
+  
 }
 </style>

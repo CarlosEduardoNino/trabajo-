@@ -214,7 +214,7 @@ body {
   color: #007bff;
 }
 
-/* Unique styles for each card */
+
 .card-1 { background-color: #e8f5e9; }
 .card-2 { background-color: #fff3e0; }
 .card-3 { background-color: #e1f5fe; }
@@ -235,5 +235,34 @@ body {
 .description-1, .description-2, .description-3, .description-4, .description-5, .description-6, .description-7, .description-8, .description-9 {
   font-size: 0.9rem;
   line-height: 1.6;
+}
+
+
+@media screen and (max-width: 768px) {
+  .card {
+    margin: 10px;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  }
+
+  .card-title { font-size: 1.2rem; }
+
+  .card-type { font-size: 0.8rem; }
+  body{
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Poppins', sans-serif;
+
+  }
+  
 }
 </style>

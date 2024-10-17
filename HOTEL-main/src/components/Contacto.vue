@@ -18,14 +18,10 @@
         <div class="cards">
           <h2>Ubicación</h2>
           <div class="map">
-            <iframe 
-  width="100%" 
-  height="200" 
-  frameborder="0" 
-  style="border:0" 
-  src="https://www.google.com/maps/embed/v1/view?key=TU_API_KEY&center=23.4162,25.6628&zoom=6" 
-  allowfullscreen>
-</iframe>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31807.67269331996!2d-74.11967930421207!3d4.653332867136881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99f6c9159a7f%3A0xdccc25a78db7c8de!2sHotel%20Tequendama!5e0!3m2!1ses!2sco!4v1696519684351!5m2!1ses!2sco"
+                width="524" height="200" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
 
           </div>
         </div>
@@ -49,7 +45,7 @@
             </div>
           </form>
         </div>
-        <div class="cards">
+        <div class="cardss">
           <h2>Síguenos</h2>
           <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -60,14 +56,12 @@
           </div>
         </div>
       </div>
-      <!-- Botones de pin -->
+     
       <button class="pin-button" style="top: 10px; left: 10px;"></button>
       <button class="pin-button" style="top: 10px; right: 10px;"></button>
       <button class="pin-button" style="bottom: 10px; left: 10px;"></button>
-      <button class="pin-button" style="bottom: 10px; right: 10px;"></button>
-      <button class="pin-button" style="top: 20%; left: 20%;"></button>
-      <button class="pin-button" style="top: 20%; right: 20%;"></button>
-      <button class="pin-button" style="bottom: 20%; left: 20%;"></button>
+      
+
       <button class="pin-button" style="bottom: 20%; right: 20%;"></button>
     </div>
   </body>
@@ -101,6 +95,16 @@
             background-color: white;
             border-radius: 15px;
             padding: 20px;
+            text-align: center;
+            border: 2px solid #d4af37;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .cardss {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            height: 200px;
             text-align: center;
             border: 2px solid #d4af37;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -194,5 +198,105 @@
         }
         .social-icons a:hover {
             color: #b88a4a;
+        }
+        @media screen and (max-width: 968px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .cards {
+                margin-bottom: 20px;
+            } 
+            .pin-button {
+                width: 20px;
+                height: 20px;
+                top: 10px;
+                left: 10px;
+            }
+            .pin-button::after {
+                width: 10px;
+                height: 10px;
+                top: 5px;
+                left: 5px;
+            }
+            .social-icons {
+                font-size: 1.5em;
+            }    
+            body{
+                background-color: #f2e8d5;
+                color: #3b2f2f;
+                font-family: 'Times New Roman', serif;
+                font-size: 16px;
+                line-height: 1.5;
+                margin: 0;
+                padding: 0;
+            }      
+        }
+        @media screen and (max-width: 600px) {
+            .cards {
+                padding: 10px;
+            }
+            .pin-button {
+                width: 15px;
+                height: 15px;
+                top: 5px;
+                left: 5px;
+            }
+            .pin-button::after {
+                width: 7.5px;
+                height: 7.5px;
+                top: 2.5px;
+                left: 2.5px;
+            }
+            .social-icons {
+                font-size: 1em;
+            }
+            body{
+                background-color: #f2e8d5;
+                color: #3b2f2f;
+                font-family: 'Times New Roman', serif;
+                font-size: 16px;
+                line-height: 1.5;
+                margin: 0;
+                padding: 0;
+            }
+            .container{
+                padding: 10px;
+                margin: 10px;
+                border-radius: 10px;
+                background-color: #e0d4b3;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+          
+        }
+        @media screen and (max-width: 1200px) {
+            .cards {
+                padding: 10px;
+            }
+            .pin-button {
+                width: 15px;
+                height: 15px;
+                top: 5px;
+                left: 5px;
+            }
+            .pin-button::after {
+                width: 7.5px;
+                height: 7.5px;
+                top: 2.5px;
+                left: 2.5px;
+            }
+            .social-icons {
+                font-size: 1em;
+            }
+            body{
+                background-color: #f2e8d5;
+                color: #3b2f2f;
+                font-family: 'Times New Roman', serif;
+                font-size: 16px;
+                line-height: 1.5;
+                margin: 0;
+                padding: 0;
+            }
+          
         }
   </style>

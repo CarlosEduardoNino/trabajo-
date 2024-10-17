@@ -2,17 +2,17 @@
   <div class="hotel-homepage">
     <header class="header">
       <nav class="navigation">
-        <router-link to="/" class="nav-item" exact>Home</router-link>
-        <router-link to="/Habitaciones" class="nav-item">Rooms</router-link>
-        <router-link to="/Servicios" class="nav-item">Services</router-link>
+        <router-link to="/"  class="nav-item" exact>Home</router-link>
+        <router-link to="/Habitaciones"  class="nav-item">Rooms</router-link>
+        <router-link to="/Servicios"  class="nav-item">Services</router-link>
       </nav>
       <div class="logo-container">
-        <img src="https://files.oaiusercontent.com/file-rlJVJcoA4fYc3bx5d7rRy22M?se=2024-10-17T00%3A35%3A05Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dd6425c04-f45e-470e-9fe3-7d18973f2164.webp&sig=2f1frj8z9H92e54EsLx03aP60Wsgpf7u/mX10hQzf5Q%3D" alt="Hotel Logo" class="logo-image">
+        <img src="">
         <h1 class="hotel-name">Luxury Haven</h1>
       </div>
       <nav class="navigation">
         <router-link to="/Actividad" class="nav-item">Activity</router-link>
-        <router-link to="/Contacto" class="nav-item">Contact</router-link>
+        <router-link to="/Contacto"  class="nav-item">Contact</router-link>
       </nav>
     </header>
     
@@ -29,7 +29,7 @@ import { useRoute } from 'vue-router'
 export default {
   setup() {
     const route = useRoute()
-
+    
     const scrollToTop = () => {
       window.scrollTo(0, 0)
     }
@@ -45,6 +45,7 @@ export default {
     return {}
   }
 }
+
 </script>
 
 <style lang="scss" scoped>
@@ -66,7 +67,7 @@ export default {
   z-index: 1000;
   background: linear-gradient(to right, #0a0a0a, #1a1a1a, #0a0a0a);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   padding: 10px 30px;
   box-shadow: 0 2px 15px rgba(255, 215, 0, 0.1);
@@ -131,7 +132,7 @@ export default {
 }
 
 .main-content {
-  margin-top: 100px; // Adjusted to account for fixed header
+  margin-top: 100px; 
   padding: 20px;
   color: #d4af37;
 }
@@ -148,7 +149,8 @@ export default {
 @media (max-width: 1024px) {
   .header {
     flex-direction: column;
-    padding: 10px;
+    padding: 2px;
+
   }
 
   .logo-container {
