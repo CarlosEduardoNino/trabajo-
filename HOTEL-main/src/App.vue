@@ -1,23 +1,18 @@
 <template>
   <div class="hotel-homepage">
     <header class="header">
-      <div class="logo">HOTEL</div>
       <nav class="navigation">
-        <router-link to="/" class="nav-item" exact>
-          <i class="fas fa-home"></i> HOME
-        </router-link>
-        <router-link to="/Habitaciones" class="nav-item">
-          <i class="fas fa-bed"></i> ROOMS
-        </router-link>
-        <router-link to="/Servicios" class="nav-item">
-          <i class="fas fa-concierge-bell"></i> SERVICES
-        </router-link>
-        <router-link to="/Contacto" class="nav-item">
-          <i class="fas fa-envelope"></i> CONTACT
-        </router-link>
-        <router-link to="/Actividad" class="nav-item">
-          <i class="fas fa-bicycle"></i> ACTIVITIES
-        </router-link>
+        <router-link to="/" class="nav-item" exact>Home</router-link>
+        <router-link to="/Habitaciones" class="nav-item">Rooms</router-link>
+        <router-link to="/Servicios" class="nav-item">Services</router-link>
+      </nav>
+      <div class="logo-container">
+        <img src="https://files.oaiusercontent.com/file-rlJVJcoA4fYc3bx5d7rRy22M?se=2024-10-17T00%3A35%3A05Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dd6425c04-f45e-470e-9fe3-7d18973f2164.webp&sig=2f1frj8z9H92e54EsLx03aP60Wsgpf7u/mX10hQzf5Q%3D" alt="Hotel Logo" class="logo-image">
+        <h1 class="hotel-name">Luxury Haven</h1>
+      </div>
+      <nav class="navigation">
+        <router-link to="/Actividad" class="nav-item">Activity</router-link>
+        <router-link to="/Contacto" class="nav-item">Contact</router-link>
       </nav>
     </header>
     
@@ -28,237 +23,148 @@
 </template>
 
 <script>
+import { onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
+
 export default {
-  name: 'HotelHomepage',
-  // Add any necessary component logic here
+  setup() {
+    const route = useRoute()
+
+    const scrollToTop = () => {
+      window.scrollTo(0, 0)
+    }
+
+    onMounted(() => {
+      scrollToTop()
+    })
+
+    onUnmounted(() => {
+      scrollToTop()
+    })
+
+    return {}
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
-  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Great+Vibes&display=swap');
 
-  body {
-    background: linear-gradient(to bottom, #d4c19c, #f2e8d5);
-    font-family: 'Playfair Display', serif;
+.hotel-homepage {
+  font-family: 'Playfair Display', serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #0a0a0a;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(to right, #0a0a0a, #1a1a1a, #0a0a0a);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 30px;
+  box-shadow: 0 2px 15px rgba(255, 215, 0, 0.1);
+}
+
+.logo-container {
+  text-align: center;
+  padding: 0 20px;
+
+  .logo-image {
+    height: 60px;
+    margin-bottom: 5px;
+  }
+
+  .hotel-name {
+    font-family: 'Great Vibes', cursive;
+    font-size: 36px;
+    font-weight: 400;
+    color: #ffd700;
     margin: 0;
-    padding: 0;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    animation: golden-pulse 4s ease-in-out infinite;
   }
-  
-  .hotel-homepage {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+}
 
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
+.navigation {
+  display: flex;
+  gap: 20px;
 
-    .logo {
-      font-size: 36px;
-      font-weight: bold;
-      color: #fff;
+  .nav-item {
+    text-decoration: none;
+    color: #d4af37;
+    font-weight: 400;
+    font-size: 18px;
+    font-style: italic;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #ffd700;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
     }
 
-    .navigation {
-      display: flex;
-      gap: 30px;
+    &:hover, &.router-link-active {
+      color: #ffd700;
 
-      .nav-item {
-        text-decoration: none;
-        color: #fff;
-        font-weight: bold;
-        font-size: 18px;
-        transition: color 0.3s ease;
-        display: flex;
-        align-items: center;
-
-        i {
-          margin-right: 8px;
-        }
-
-        &.active {
-          color: #d4c19c;
-        }
-
-        &:hover {
-          color: #d4c19c;
-        }
+      &::before {
+        transform: translateX(0);
       }
     }
+  }
+}
+
+.main-content {
+  margin-top: 100px; // Adjusted to account for fixed header
+  padding: 20px;
+  color: #d4af37;
+}
+
+@keyframes golden-pulse {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+  }
+}
+
+@media (max-width: 1024px) {
+  .header {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .logo-container {
+    order: -1;
+    margin-bottom: 10px;
+  }
+
+  .navigation {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
   .main-content {
-    padding: 40px;
-    margin-top: 100px;
-    background: linear-gradient(to bottom, #d4c19c, #f2e8d5);
-
-    .hero {
-      position: relative;
-      height: 400px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      .hero-title {
-        font-size: 72px;
-        font-weight: bold;
-        color: #fff;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      }
-
-      .hero-subtitle {
-        font-size: 36px;
-        color: #fff;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      }
-
-      .hotel-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: url('hotel-exterior.jpg');
-        background-size: cover;
-        background-position: center;
-        z-index: -1;
-      }
-    }
-
-    .info-panel {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 40px;
-
-      .info-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .icon {
-          font-size: 32px;
-          color: #8b7355;
-          margin-bottom: 10px;
-        }
-
-        span {
-          font-size: 14px;
-          font-weight: bold;
-        }
-      }
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 40px;
-
-      .gallery-item {
-        overflow: hidden;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-        &.large {
-          grid-column: span 2;
-          grid-row: span 2;
-        }
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.3s ease;
-
-          &:hover {
-            transform: scale(1.05);
-          }
-        }
-      }
-    }
-
-    .cta-section {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 40px;
-
-      .cta-item {
-        flex: 1;
-        background-color: #fff;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin: 0 10px;
-
-        h3 {
-          font-size: 24px;
-          font-weight: bold;
-          color: #8b7355;
-          margin-bottom: 10px;
-        }
-
-        p {
-          font-size: 16px;
-          margin-bottom: 20px;
-        }
-
-        .cta-button {
-          background-color: #8b7355;
-          color: #fff;
-          border: none;
-          padding: 10px 20px;
-          font-size: 16px;
-          font-weight: bold;
-          border-radius: 4px;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-
-          &:hover {
-            background-color: #6d5a43;
-          }
-        }
-      }
-    }
+    margin-top: 150px;
   }
-
-  // Additional styles for icons (you may need to use a proper icon library)
-  .icon {
-    &::before {
-      content: '';
-      display: inline-block;
-      width: 32px;
-      height: 32px;
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
-
-    &-wifi::before {
-      background-image: url('wifi-icon.svg');
-    }
-
-    &-restaurant::before {
-      background-image: url('restaurant-icon.svg');
-    }
-
-    &-spa::before {
-      background-image: url('spa-icon.svg');
-    }
-
-    &-parking::before {
-      background-image: url('parking-icon.svg');
-    }
-  }
+}
 </style>
