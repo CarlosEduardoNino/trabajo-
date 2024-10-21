@@ -54,6 +54,9 @@
             <a href="#"><i class="fab fa-whatsapp"></i></a>
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
           </div>
+            <div class="car">
+               
+            </div>
         </div>
       </div>
      
@@ -109,6 +112,21 @@
             border: 2px solid #d4af37;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .car{
+            background-color: white;
+            background-image: url("https://img.pikbest.com/wp/202405/hotel-entrance-luxury-room-in-stunning-3d-rendering_9791225.jpg!w700wp");
+            background-size: cover;
+            border-radius: 15px;
+            position: relative;
+            
+            width: 100%;
+            
+            top: 100px;
+            height: 200px;
+            text-align: center;
+            border: 2px solid #d4af37;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         .cards:hover {
             transform: translateY(-10px);

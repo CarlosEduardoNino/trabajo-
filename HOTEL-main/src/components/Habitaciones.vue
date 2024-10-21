@@ -253,13 +253,13 @@ body {
 
 .close-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #8b6d3f;
+    top: -8px;
+    right: 1px;
+    font-size: 34px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #8b6d3f;
 }
 
 .modal-image {

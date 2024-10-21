@@ -185,12 +185,12 @@ const autoSlide = () => {
 
 const submitBooking = () => {
   console.log('Booking submitted:', booking.value);
-  // Here you would typically send this data to a server
+  r
   alert('Thank you for your booking request. We will contact you shortly to confirm your reservation.');
 };
 
 onMounted(() => {
-  setInterval(autoSlide, 5000); // Change slide every 5 seconds
+  setInterval(autoSlide, 5000); 
 
   nextTick(() => {
     gsap.from('.carousel-image', { opacity: 0, duration: 1, stagger: 0.5 });

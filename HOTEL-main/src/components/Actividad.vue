@@ -34,7 +34,7 @@ const activities = ref([
     title: 'Kayaking Adventure',
     type: 'Water Sport',
     description: 'Embark on a thrilling kayaking journey through rapids and calm waters.',
-    image: '/api/placeholder/600/400',
+    image: 'https://www.kayak-newzealand.com/wp-content/uploads/2017/08/kayaking-adventures-families-new-zealand.jpg',
     altText: 'Person kayaking in white water rapids',
     imageWidth: '100%',
     imageHeight: '250px',
@@ -46,7 +46,7 @@ const activities = ref([
     title: 'Mountain Hiking',
     type: 'Outdoor Activity',
     description: 'Explore breathtaking trails and reach new heights in stunning mountain landscapes.',
-    image: '/api/placeholder/600/400',
+    image: 'https://i.natgeofe.com/n/7afda449-1780-4938-8342-2abe32326c86/Montblanchike_3x4.jpg',
     altText: 'Hiker on a mountain trail with a scenic backdrop',
     imageWidth: '100%',
     imageHeight: '300px',
@@ -58,7 +58,7 @@ const activities = ref([
     title: 'Zen Yoga Retreat',
     type: 'Wellness',
     description: 'Find inner peace and improve flexibility in our tranquil yoga sessions.',
-    image: '/api/placeholder/600/400',
+    image: 'https://images.stockcake.com/public/7/b/e/7becf30f-9475-4a57-8723-15d27be0446a_medium/serene-yoga-retreat-stockcake.jpg',
     altText: 'Person doing yoga pose in a serene natural setting',
     imageWidth: '100%',
     imageHeight: '280px',
@@ -70,7 +70,7 @@ const activities = ref([
     title: 'Gourmet Cooking Class',
     type: 'Culinary Experience',
     description: 'Learn to create exquisite dishes under the guidance of world-class chefs.',
-    image: '/api/placeholder/600/400',
+    image: 'https://img.freepik.com/premium-photo/gourmet-cooking-class-sunset_1271419-2330.jpg',
     altText: 'Chef demonstrating cooking techniques to a group',
     imageWidth: '100%',
     imageHeight: '220px',
@@ -82,7 +82,7 @@ const activities = ref([
     title: 'Wildlife Photography',
     type: 'Creative Workshop',
     description: 'Capture the beauty of nature and wildlife through your lens.',
-    image: '/api/placeholder/600/400',
+    image: 'https://lightroom-photoshop-tutorials.com/wp-content/uploads/2021/04/Capturing-the-Majesty-Wildlife-Photography-in-Action-1024x585.webp',
     altText: 'Photographer taking picture of a wild animal',
     imageWidth: '100%',
     imageHeight: '260px',
@@ -94,7 +94,7 @@ const activities = ref([
     title: 'Stargazing Night',
     type: 'Astronomy Event',
     description: 'Explore the wonders of the night sky with expert astronomers.',
-    image: '/api/placeholder/600/400',
+    image: 'https://static.wixstatic.com/media/1da5c3_59f907e823d74ca6bb9aef3c8d2a119d~mv2.jpg/v1/fill/w_568,h_378,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/1da5c3_59f907e823d74ca6bb9aef3c8d2a119d~mv2.jpg',
     altText: 'Silhouette of people looking at a starry sky',
     imageWidth: '100%',
     imageHeight: '240px',
@@ -106,7 +106,7 @@ const activities = ref([
     title: 'Surf Camp',
     type: 'Water Sport',
     description: 'Ride the waves and learn surfing techniques from professional instructors.',
-    image: '/api/placeholder/600/400',
+    image: 'https://awavetravel.com/wp-content/uploads/2023/08/Madeira-Surf-Camp-Slider-1.jpg',
     altText: 'Surfer riding a big wave',
     imageWidth: '100%',
     imageHeight: '270px',
@@ -118,7 +118,7 @@ const activities = ref([
     title: 'Rock Climbing Adventure',
     type: 'Extreme Sport',
     description: 'Challenge yourself on natural rock formations with expert guidance and safety equipment.',
-    image: '/api/placeholder/600/400',
+    image: 'https://www.adventureout.com/wp-content/uploads/2017/01/rock-climb-background-1.jpg',
     altText: 'Rock climber scaling a cliff face',
     imageWidth: '100%',
     imageHeight: '290px',
@@ -130,7 +130,7 @@ const activities = ref([
     title: 'Pottery Workshop',
     type: 'Arts and Crafts',
     description: 'Discover the art of ceramics and create your own unique pottery pieces.',
-    image: '/api/placeholder/600/400',
+    image: 'https://kaizenaire.com/wp-content/uploads/2023/09/Clay-Making-Workshops.png',
     altText: 'Hands shaping clay on a pottery wheel',
     imageWidth: '100%',
     imageHeight: '230px',
@@ -162,10 +162,17 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+
 .card-img-top {
   height: 200px;
   object-fit: cover;
   transition: transform 0.3s ease-in-out;
+  border-radius: 0%;
+   object-fit: cover;
+   margin: 0 auto;
+   position: relative;
+   top: -65px;
+   border: 4px solid white;
 }
 
 .card:hover .card-img-top {

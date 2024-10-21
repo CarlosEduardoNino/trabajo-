@@ -2,50 +2,44 @@
   <div class="hotel-homepage">
     <header class="header">
       <nav class="navigation">
-        <router-link to="/"  class="nav-item" exact>Home</router-link>
-        <router-link to="/Habitaciones"  class="nav-item">Rooms</router-link>
-        <router-link to="/Servicios"  class="nav-item">Services</router-link>
+        <router-link to="/" class="nav-item" exact>Home</router-link>
+        <router-link to="/Habitaciones" class="nav-item">Rooms</router-link>
+        <router-link to="/Servicios" class="nav-item">Services</router-link>
       </nav>
       <div class="logo-container">
-        <img src="">
+      
         <h1 class="hotel-name">Luxury Haven</h1>
       </div>
       <nav class="navigation">
         <router-link to="/Actividad" class="nav-item">Activity</router-link>
-        <router-link to="/Contacto"  class="nav-item">Contact</router-link>
+        <router-link to="/Contacto" class="nav-item">Contact</router-link>
       </nav>
     </header>
     
     <main class="main-content">
-      <router-view></router-view>
+      <router-view v-slot="{ Component }">
+        <component :is="Component" :key="$route.fullPath" />
+      </router-view>
     </main>
   </div>
 </template>
 
-<script>
-import { onMounted, onUnmounted } from 'vue'
+<script setup>
+import { onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
-export default {
-  setup() {
-    const route = useRoute()
-    
-    const scrollToTop = () => {
-      window.scrollTo(0, 0)
-    }
+const route = useRoute()
 
-    onMounted(() => {
-      scrollToTop()
-    })
-
-    onUnmounted(() => {
-      scrollToTop()
-    })
-
-    return {}
-  }
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'instant'
+  })
 }
 
+onMounted(scrollToTop)
+
+watch(() => route.path, scrollToTop, { immediate: true })
 </script>
 
 <style lang="scss" scoped>
@@ -67,7 +61,7 @@ export default {
   z-index: 1000;
   background: linear-gradient(to right, #0a0a0a, #1a1a1a, #0a0a0a);
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   padding: 10px 30px;
   box-shadow: 0 2px 15px rgba(255, 215, 0, 0.1);
@@ -78,13 +72,13 @@ export default {
   padding: 0 20px;
 
   .logo-image {
-    height: 60px;
+    height: 70px;
     margin-bottom: 5px;
   }
 
   .hotel-name {
     font-family: 'Great Vibes', cursive;
-    font-size: 36px;
+    font-size: 40px;
     font-weight: 400;
     color: #ffd700;
     margin: 0;
@@ -102,7 +96,7 @@ export default {
     text-decoration: none;
     color: #d4af37;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 28px;
     font-style: italic;
     transition: all 0.3s ease;
     padding: 5px 10px;
@@ -149,8 +143,7 @@ export default {
 @media (max-width: 1024px) {
   .header {
     flex-direction: column;
-    padding: 2px;
-
+    padding: 10px;
   }
 
   .logo-container {
